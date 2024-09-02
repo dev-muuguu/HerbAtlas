@@ -26,7 +26,9 @@ app.use((req: Request, res: Response, next: NextFunction) => {
   next();
 });
 
-const PORT = process.env.PORT || 8080;
+const PORT = 8080;
+
+// const PORT = process.env.PORT || 8080;
 
 app.get("/", (req: Request, res: Response) => {
   res.send("suuuuup");
