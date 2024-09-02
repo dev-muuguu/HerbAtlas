@@ -49,11 +49,11 @@ const allUsers = async (req: Request, res: Response) => {
 };
 
 const getUser = async (req: Request, res: Response) => {
-  const { id } = req.body;
+  const { id } = req.params;
   try {
     const user = await Prisma.user.findUnique({
       where: {
-        id: id,
+        id: Number(id),
       },
     });
     if (!user) {

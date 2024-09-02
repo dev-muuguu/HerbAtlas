@@ -3,8 +3,9 @@ import express, { Response, Request, NextFunction } from "express";
 import cors from "cors";
 import helmet from "helmet";
 import colors from "colors";
-
+import swaggerUi from "swagger-ui-express";
 import userRouter from "./api/users/router";
+import swaggerSpec from "./utils/swagger";
 
 dotenv.config();
 
@@ -31,7 +32,10 @@ app.get("/", (req: Request, res: Response) => {
   res.send("suuuuup");
 });
 
-app.use("/api", userRouter);
+// Serve Swagger UI
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+
+app.use("/api/users", userRouter);
 
 app.listen(PORT, () => {
   console.log(
