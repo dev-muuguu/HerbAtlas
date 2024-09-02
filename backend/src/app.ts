@@ -40,7 +40,7 @@ app.use("/api/users", userRouter);
 app.listen(PORT, () => {
   console.log(
     colors.white("Server is running on"),
-    colors.green.underline(`http://localhost:${PORT}`)
+    colors.green.underline(`http://202.179.22.106:${PORT}`)
   );
 });
 
