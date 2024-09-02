@@ -19,23 +19,16 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: "18.x" # Ensure this matches your project's Node.js version
+          node-version: "18.x" # Adjust this to your Node.js version
 
       - name: Install dependencies
         run: npm install
+        working-directory: ./backend # Specify the correct directory for package.json
 
       - name: Build the project
         run: npm run build
+        working-directory: ./backend # Ensure it points to the correct directory
 
       - name: Run tests
         run: npm test
-
-  deploy:
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
-      - name: Deploy to Server
-        run: |
-          echo "Deploying to server..."
-          # Add your deployment commands here
-          # For example, use scp or rsync to upload files to your server
+        working-directory: ./backend # Ensure it points to the correct directory
